@@ -1,8 +1,8 @@
 
 # Docker HPCC
 ### Supported tags and respective Dockerfile links
-* 6.4.14, 6.4, 6, latest [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/blob/initial-check-in/6/Dockerfile)
-* 6.4.14, 6.4, 6, CentOS 7 [(6/Platform/centos/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/blob/initial-check-in/6/platform/centos/Dockerfile)
+* 6.4.20-1 latest  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
+* 7-b2 7-beta [(7-beta/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7-beta/Dockerfile)
 
 
 ## What is HPCCSystems (HPCC)
@@ -58,7 +58,7 @@ There are two Linux distributions: Ubuntu (Ubuntu 16.04, default) and CentOS (Ce
 Make sure the HPCC Platform version is available in HPCCSystems.com -> "Download" -> "HPCC SYSTEM PLATFORM"
 Update the version with update.sh. For example, if you want to build 6.4.14-1:
 ```sh
-./update 6.4.14-1
+./update 6.4.18-1
 ```
 ### Build
 You can go to the directory of interest which contains the Dockerfile to run the build, or you can run the test-build.sh script which includes test:
