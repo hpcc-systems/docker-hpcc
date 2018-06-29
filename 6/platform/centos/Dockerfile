@@ -35,8 +35,8 @@ RUN chmod u+s $(which ping)
 
 RUN /usr/bin/ssh-keygen -A
 
-ENV VERSION 6.4.16
-ENV FULL_VERSION 6.4.16-1
+ENV VERSION 6.4.20
+ENV FULL_VERSION 6.4.20-1
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}.el7.x86_64.rpm
 
