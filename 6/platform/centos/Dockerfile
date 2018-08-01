@@ -35,8 +35,8 @@ RUN chmod u+s $(which ping)
 
 RUN /usr/bin/ssh-keygen -A
 
-ENV VERSION 6.4.20
-ENV FULL_VERSION 6.4.20-1
+ENV VERSION 6.4.24
+ENV FULL_VERSION 6.4.24-1
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}.el7.x86_64.rpm
 
@@ -53,4 +53,4 @@ EXPOSE 8010 8002 8015 9876
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ["bash", "-c",  "/usr/sbin/sshd -D"]
+CMD ["/usr/sbin/sshd", "-D"]

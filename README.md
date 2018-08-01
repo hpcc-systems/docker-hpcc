@@ -1,8 +1,9 @@
 
 # Docker HPCC
 ### Supported tags and respective Dockerfile links
-* 6.4.20-1 latest  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
+* 6.4.24-1 latest  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
 * 7-b2 7-beta [(7-beta/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7-beta/Dockerfile)
+* 6.4.20-1
 
 
 ## What is HPCCSystems (HPCC)
@@ -66,3 +67,8 @@ You can go to the directory of interest which contains the Dockerfile to run the
 sudo ./test-build.sh -v 6 -l ubuntu -p platform
 ```
 This will build HPCC Platform 6.x  for Ubuntu 16.04.
+
+To upload a build image to Docker Hub:
+```sh
+docker push <repo>:<tag>  For example: docker push hpccsystems/hpcc:latest
+```

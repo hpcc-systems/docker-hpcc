@@ -47,4 +47,4 @@ EXPOSE 8010 8002 8015 9876
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ["bash", "-c",  "/usr/sbin/sshd -D"]
+CMD ["/usr/sbin/sshd", "-D"]
