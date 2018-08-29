@@ -113,6 +113,7 @@ do
 done
 
 
+
 [ ${#variants[@]} -eq 0 ] &&  variants=("ubuntu")
 [ ${#packages[@]} -eq 0 ] &&  packages=("platform")
 
