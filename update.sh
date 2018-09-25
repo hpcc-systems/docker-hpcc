@@ -5,6 +5,7 @@ cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 versions=( "$@" )
 
+# Usage
 # ./update.sh "6.4.14-1 6.4.16-rc1"
 if [ ${#versions[@]} -eq 0 ]; then
         versions=( */ )

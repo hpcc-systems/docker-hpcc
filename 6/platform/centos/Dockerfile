@@ -3,8 +3,8 @@ FROM hpccsystems/hpcc-base:6-el7
 RUN chmod u+s $(which ping)
 #RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
 
-ENV VERSION 6.4.24
-ENV FULL_VERSION 6.4.24-1
+ENV VERSION 6.4.26
+ENV FULL_VERSION 6.4.26-1
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}.el7.x86_64.rpm
 

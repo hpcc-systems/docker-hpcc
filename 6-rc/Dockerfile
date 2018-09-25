@@ -1,34 +1,11 @@
-FROM ubuntu:xenial
+FROM hpccsystems/hpcc-base:6-xenial
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-		ca-certificates       \
-		wget                  \
-                libaprutil1           \
-                libboost-regex1.58.0  \
-                libicu55              \
-                libldap-2.4-2         \
-                libtbb2               \
-                libnuma1              \
-                libxml2               \
-                libxslt1.1            \
-                g++                   \
-                openssh-client        \
-                openssh-server        \
-                expect                \
-                rsync                 \
-                python                \
-                sudo                  \
-                libblas3              \
-                libatlas3-base        \
-                psmisc                \
-                ansible               \
-                --fix-missing         \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y iputils-ping
 
 RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
 
 ENV VERSION 6.4.22
-ENV FULL_VERSION 6.4.22-rc2
+ENV FULL_VERSION 6.4.28-rc1
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}xenial_amd64.deb
 
