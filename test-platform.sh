@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #How to run:
-#sudo docker run --rm -v "$PWD/test-image.sh:/usr/local/bin/test.sh" hpcc:<tag> test.sh
+# "--privilged" is important on CentOS. Otherwise "su - hpcc" will fail with error
+# "su: cannot open session: Permission denied"
+#sudo docker run --privileged --rm -v "$PWD/test-platform.sh:/usr/local/bin/test.sh" hpcc:<tag> test.sh
 
 
 cd ~

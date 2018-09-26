@@ -4,7 +4,6 @@ set -e
 /usr/bin/ssh-keygen -A
 #/etc/init.d/hpcc-init start
 
-#cmd="$@"
 if [ "${EXEC_IN_LOOP}" = "true" ]
 then
   interval=5

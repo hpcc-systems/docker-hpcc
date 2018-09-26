@@ -1,10 +1,10 @@
-FROM hpccsystems/hpcc-base:6-xenial
+FROM hpccsystems/hpcc-base:7-xenial
 
-RUN apt-get update && apt-get install -y iputils-ping
+RUN apt-get update && apt-get install -y iputils-ping curl
 RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
 
-ENV VERSION 6.4.26
-ENV FULL_VERSION 6.4.26-1
+ENV VERSION 7.0.0
+ENV FULL_VERSION 7.0.0-rc2
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}xenial_amd64.deb
 
@@ -15,6 +15,8 @@ RUN set -x \
    && rm -rf "${PLATFORM_PACKAGE}"
 
 EXPOSE 8010 8002 8015 9876
+
+RUN cp -r /home/hpcc/.ssh ~/
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

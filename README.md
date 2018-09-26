@@ -1,8 +1,10 @@
 
 # Docker HPCC
 ### Supported tags and respective Dockerfile links
-* 6.4.24-1 latest  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
-* 7-b2 7-beta [(7-beta/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7-beta/Dockerfile)
+* 6.4.26-1 latest  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
+* 7-rc2 7-rc [(7-beta/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7-rc/Dockerfile)
+* 7-beta
+* 6.4.24-1
 * 6.4.20-1
 
 
@@ -24,24 +26,24 @@ The default ECLWatch port is 8010.
 ### Ubuntu
 To start Docker in interactive mode and map ECLWatch port 8010 to host 8010:
 ```sh
-sudo docker run -t -i --privileged -p 8010:8010 hpcc /bin/bash
+sudo docker run -t -i -p 8010:8010 hpccsystems/hpcc /bin/bash
 ```
 
 To start Docker in daemon mode and map ECLWatch port 8010 to host 8020:
 ```sh
-sudo docker run -d --privileged -p 8020:8010 hpcc
+sudo docker run -d -p 8020:8010  hpccsystems/hpcc
 ```
 
 
 ### CentOS
 To start Docker in interactive mode and map ECLWatch port 8020 to host 8010:
 ```sh
-sudo docker run -t -i --privileged -e "container=docker" -p 8020:8010 hpcc:el7 /bin/bash
+sudo docker run -t -i --privileged -e "container=docker" -p 8020:8010 hpccsystems/hpcc:el7 /bin/bash
 ```
 
 To start Docker in daemon mode and map ECLWatch port 8010 to host 8010:
 ```sh
-sudo docker run -d --privileged -e "container=docker"-p 8010:8010 hpcc:el7
+sudo docker run -d --privileged -e "container=docker"-p 8010:8010 hpccsystems/hpcc:el7
 ```
 
 ## How to build Docker HPCC image

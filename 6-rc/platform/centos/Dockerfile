@@ -1,35 +1,4 @@
-FROM centos:7
-
-RUN yum update -y && yum install -y \
-                epel-release          \
-		wget                  \
-                gcc-c++               \
-                boost-regex           \
-                openldap              \
-                libicu                \
-                m4                    \
-                libtool               \
-                libxslt               \
-                libxml                \
-                openssh-server        \
-                openssh-clients       \
-                expect                \
-                libarchive            \
-                rsync                 \
-                apr                   \
-                apr-util              \
-                zip                   \
-                tbb                   \
-                net-tools             \
-                sudo                  \
-                psmisc                \
-                blas.x86_64           \
-                atlas.x86_64          \
-                which                 \
-                numa-libs             \
-                ansible               \
-                python34              \
-                python34-libs
+FROM hpccsystems/hpcc-base:7-el7
 
 RUN chmod u+s $(which ping)
 #RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
@@ -37,7 +6,7 @@ RUN chmod u+s $(which ping)
 RUN /usr/bin/ssh-keygen -A
 
 ENV VERSION 6.4.22
-ENV FULL_VERSION 6.4.22-rc2
+ENV FULL_VERSION 6.4.28-rc1
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}.el7.x86_64.rpm
 
