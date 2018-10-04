@@ -1,12 +1,13 @@
 FROM hpccsystems/hpcc-base:7-el7
 
 RUN yum install -y curl
+#RUN yum install -y java-1.8.0-openjdk
 RUN chmod u+s $(which ping)
 #RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
 
 ENV VERSION 7.0.0
-ENV FULL_VERSION 7.0.0-rc2
-#ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
+ENV FULL_VERSION 7.0.0-rc3
+#ENV PLATFORM_DOWNLOAD_MD5  c435045d4319880f141e8faf23555b83
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}.el7.x86_64.rpm
 
 RUN set -x \
