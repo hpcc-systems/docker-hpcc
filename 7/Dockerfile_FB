@@ -1,15 +1,15 @@
 FROM hpccsystems/hpcc-base:7-xenial
 
-RUN rm -rf /var/lib/apt/lists/*
-RUN apt-get update
-RUN apt-get install -y iputils-ping curl xterm
-RUN apt-get install -y openjdk-8-jdk iproute2
-
+RUN apt-get update && apt-get install -y iputils-ping curl xterm apt-transport-https
 RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
+RUN echo "deb https://packages.elastic.co/beats/apt stable main" |  tee -a /etc/apt/sources.list.d/beats.list
+RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch |  apt-key add -
+RUN apt-get update
+RUN apt-get install -y filebeat
 
 ENV VERSION 7.0.0
-ENV FULL_VERSION 7.0.0-rc4
-#ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
+ENV FULL_VERSION 7.0.0-1
+#ENV PLATFORM_DOWNLOAD_MD5  ef58e94dcc66a45cb0fc8202e68b50d9
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}xenial_amd64.deb
 
 RUN set -x \
@@ -18,16 +18,13 @@ RUN set -x \
    && dpkg -i "${PLATFORM_PACKAGE}" \
    && rm -rf "${PLATFORM_PACKAGE}"
 
-ENV PLUGIN_PACKAGE hpccsystems-plugin-spark_${FULL_VERSION}xenial_amd64.deb
-RUN set -x \
-   &&  wget  "http://wpc.423a.rhocdn.net/00423A/releases/CE-Candidate-${VERSION}/bin/plugins/${PLUGIN_PACKAGE}" \
-   #&& echo "$PLATFORM_DOWNLOAD_MD5 ${PLUGIN_PACKAGE}" | md5sum -c - \
-   && dpkg -i "${PLUGIN_PACKAGE}" \
-   && rm -rf "${PLUGIN_PACKAGE}"
-
 EXPOSE 8010 8002 8015 9876
 
 RUN cp -r /home/hpcc/.ssh ~/
+
+# If this image will be in Spark cluster add following files
+# It requires to build from parent directory
+#COPY stack/admin/spark/* /opt/HPCCSystems/componentfiles/configxml/
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

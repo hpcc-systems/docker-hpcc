@@ -1,11 +1,11 @@
 version: "3"
 services:
   support:
-    image: hpccsystems/hpcc-m:7-rc4
+    image: hpccsystems/hpcc-m:7-rc4-fb
     networks:
       - ovnet
   esp:
-    image: hpccsystems/hpcc-m:7-rc4
+    image: hpccsystems/hpcc-m:7-rc4-fb
     ports:
       - "8010:8010"
       - "8002:8002"
@@ -24,23 +24,24 @@ services:
     networks:
       - ovnet
   thor-mythor:
-    image: hpccsystems/hpcc-m:7-rc4-s
+    image: hpccsystems/hpcc-m:7-rc4-fb
     deploy:
       replicas: 2
     networks:
       - ovnet
   roxie-myroxie:
-    image: hpccsystems/hpcc-m:7-rc4
+    image: hpccsystems/hpcc-m:7-rc4-fb
     deploy:
       replicas: 2
     networks:
       - ovnet
-  spark:
-    image: hpccsystems/hpcc-m:7-rc4-s
-    #privileged: true
+  elk:
+    # need set before start: sudo sysctl -w vm.max_map_count=262144
+    image: sebp/elk
     ports:
-      - "8080:8080"
-      - "7077:7077"
+      - "9200:9200"
+      - "5601:5601"
+      - "5644:5644"
     deploy:
       replicas: 1
     networks:
