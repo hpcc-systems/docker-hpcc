@@ -29,7 +29,7 @@ sudo docker node ls
 ##  Get the App
 Get HPCC-Docker-Stack to your host Linux:
 ```sh
-git clone https://github.com/xwang2713/HPCC-Docker-Stack
+git clone https://github.com/hpcc-systems/hpcc-docker
 ```
 
 ##  Run HPCC Cluster
@@ -40,6 +40,12 @@ cd to HPCC-Docker-Stack and run
 sudo docker stack deploy -c docker-stack.yml hpcc
 ```
 "hpcc" is the app name. You can give other name.
+
+Wait for all containers start...
+```sh
+sudo docker service ls
+```
+All service with prefix "hpcc_" should be started by checking "REPLICAS"  column.
 
 To configure the cluster to go bin/:
 ```sh

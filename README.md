@@ -1,9 +1,10 @@
 
 # Docker HPCC
 ### Supported tags and respective Dockerfile links
-* 6.4.26-1 latest  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
-* 7-rc2 7-rc [(7-beta/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7-rc/Dockerfile)
-* 7-beta
+* 7 latest  [(7/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7/Dockerfile)
+* 7-rc
+* 6.4.28-1  [(6/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/6/Dockerfile)
+* 6.4.26-1
 * 6.4.24-1
 * 6.4.20-1
 

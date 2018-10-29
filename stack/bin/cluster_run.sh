@@ -22,7 +22,7 @@ EOF
 
 function runHPCC()
 {
-   [ -n "$ip" ] && cid=$(${SCRIPT_HOME}/cluster_query.sh -q id -p $ip)
+   [ -n "$ip" ] && cid=$(${SCRIPT_HOME}/cluster_query.sh -a $app_name -q id -p $ip)
    [ -z "$cid" ] && return 1
    cmd="$DOCKER_SUDO docker exec $cid /etc/init.d/hpcc-init"
    if [ -n "$comp_name" ]
@@ -30,6 +30,7 @@ function runHPCC()
       cmd="$cmd -c $comp_name"
    fi
    cmd="$cmd $1"
+   #echo "$cmd"
    eval "$cmd"
 }
 
@@ -41,7 +42,7 @@ function runHPCCCluster()
    echo "# $1 HPCC Cluster ..."
    echo "#"
    echo "###############################################"
-   cid=$(${SCRIPT_HOME}/cluster_query.sh -q id -g admin)
+   cid=$(${SCRIPT_HOME}/cluster_query.sh -a $app_name -q id -g admin)
    cmd="$DOCKER_SUDO docker exec $cid /opt/hpcc-tools/$1_hpcc.sh"
    echo "$cmd"
    eval "$cmd"
@@ -76,7 +77,7 @@ action=
 while getopts "*a:c:d:hi:p:q:" arg
 do
    case $arg in
-      a) appName=${OPTARG}
+      a) app_name=${OPTARG}
          ;;
       d) ipDir=${OPTARG}
          ;;
@@ -111,7 +112,7 @@ case $action in
       if [ -z "$id" ] && [ -z "$ip" ]
       then
          rc=0
-         ${SCRIPT_HOME}/cluster_query.sh -g hpcc | \
+         ${SCRIPT_HOME}/cluster_query.sh -a $app_name -g hpcc | \
          while read line
          do
             node_name=$(echo $line | cut -d' ' -f1)
@@ -129,7 +130,7 @@ case $action in
    start)
       if [ "$comp_name" = "configmgr" ]
       then
-         cid=$(${SCRIPT_HOME}/cluster_query.sh -q id -g admin)
+         cid=$(${SCRIPT_HOME}/cluster_query.sh -a $app_name -q id -g admin)
          $DOCKER_SUDO docker exec -it $cid /opt/HPCCSystems/sbin/configmgr
          exit $?
       else

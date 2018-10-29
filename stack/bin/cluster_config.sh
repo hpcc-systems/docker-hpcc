@@ -34,7 +34,7 @@ notGenEnv=0
 while getopts "*a:e:hr:s:t:X" arg
 do
    case $arg in
-      a) appName=${OPTARG}
+      a) app_name=${OPTARG}
          ;;
       e) numEsp=${OPTARG}
          ;;
@@ -90,7 +90,7 @@ eval $cmd
 
 echo ""
 echo "Status"
-${SCRIPT_HOME}/cluster_run.sh status
+${SCRIPT_HOME}/cluster_run.sh -a $app_name status
 
 echo ""
 if [ $? -eq 0 ]

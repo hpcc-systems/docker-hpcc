@@ -82,7 +82,7 @@ QUERY_RESULT=
 while getopts "*a:c:d:g:hi:p:q:" arg
 do
    case $arg in
-      a) appName=${OPTARG}
+      a) app_name=${OPTARG}
          ;;
       d) ipDir=${OPTARG}
          ;;

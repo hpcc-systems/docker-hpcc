@@ -3,7 +3,7 @@
 #How to run:
 # "--privilged" is important on CentOS. Otherwise "su - hpcc" will fail with error
 # "su: cannot open session: Permission denied"
-#sudo docker run --privileged --rm -v "$PWD/test-platform.sh:/usr/local/bin/test.sh" hpcc:<tag> test.sh
+#sudo docker run --privileged --rm -v "$PWD/test-platform.sh:/usr/local/bin/test.sh" hpccsystems/hpcc:<tag> test.sh
 
 
 cd ~

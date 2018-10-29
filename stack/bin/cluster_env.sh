@@ -25,7 +25,7 @@ hostDir=
 while getopts "*a:d:D:h" arg
 do
    case $arg in
-      a) appName=${OPTARG}
+      a) app_name=${OPTARG}
          ;;
       d) nodeDir=${OPTARG}
          ;;
@@ -40,7 +40,7 @@ do
    esac
 done
 
-cid=$(${SCRIPT_HOME}/cluster_query.sh -q id -g admin)
+cid=$(${SCRIPT_HOME}/cluster_query.sh -a $app_name -q id -g admin)
 
 if [ -n "$hostDir" ]
 then

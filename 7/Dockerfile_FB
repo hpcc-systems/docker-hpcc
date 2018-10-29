@@ -1,10 +1,14 @@
 FROM hpccsystems/hpcc-base:7-xenial
 
-RUN apt-get update && apt-get install -y iputils-ping curl xterm
+RUN apt-get update && apt-get install -y iputils-ping curl xterm apt-transport-https
 RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
+RUN echo "deb https://packages.elastic.co/beats/apt stable main" |  tee -a /etc/apt/sources.list.d/beats.list
+RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch |  apt-key add -
+RUN apt-get update
+RUN apt-get install -y filebeat
 
 ENV VERSION 7.0.0
-ENV FULL_VERSION 7.0.0-rc4
+ENV FULL_VERSION 7.0.0-1
 #ENV PLATFORM_DOWNLOAD_MD5  ef58e94dcc66a45cb0fc8202e68b50d9
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}xenial_amd64.deb
 
