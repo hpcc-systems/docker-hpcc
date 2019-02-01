@@ -1,7 +1,8 @@
 
 # Docker HPCC
 ### Supported tags and respective Dockerfile links
-* 7.0.8-1 latest  [(7/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7/Dockerfile)
+* 7.0.10-1 latest  [(7/Dockerfile)](https://github.com/hpcc-systems/docker-hpcc/tree/master/7/Dockerfile)
+* 7.0.8-1
 * 7.0.6-1
 * 7.0.4-1
 * 7.0.2-1
@@ -64,16 +65,16 @@ There are two Linux distributions: Ubuntu (Ubuntu 16.04, default) and CentOS (Ce
 
 ### Update HPCC Platform Version
 Make sure the HPCC Platform version is available in HPCCSystems.com -> "Download" -> "HPCC SYSTEM PLATFORM"
-Update the version with update.sh. For example, if you want to build 6.4.14-1:
+Update the version with update.sh. For example, if you want to build 7.0.10-1:
 ```sh
-./update 6.4.18-1
+./update 7.0.10-1
 ```
 ### Build
 You can go to the directory of interest which contains the Dockerfile to run the build, or you can run the test-build.sh script which includes test:
 ```sh
-sudo ./test-build.sh -v 6 -l ubuntu -p platform
+sudo ./test-build.sh -v 7 -l ubuntu -p platform
 ```
-This will build HPCC Platform 6.x  for Ubuntu 16.04.
+This will build HPCC Platform 7.x  for Ubuntu 16.04.
 
 To upload a build image to Docker Hub:
 ```sh
