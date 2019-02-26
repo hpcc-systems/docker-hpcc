@@ -3,8 +3,8 @@ FROM hpccsystems/hpcc-base:7-xenial
 RUN apt-get update && apt-get install -y iputils-ping curl xterm
 RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
 
-ENV VERSION 7.0.8
-ENV FULL_VERSION 7.0.8-1
+ENV VERSION 7.0.14
+ENV FULL_VERSION 7.0.14-1
 #ENV PLATFORM_DOWNLOAD_MD5  ef58e94dcc66a45cb0fc8202e68b50d9
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}xenial_amd64.deb
 
