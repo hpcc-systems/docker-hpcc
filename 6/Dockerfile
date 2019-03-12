@@ -3,8 +3,8 @@ FROM hpccsystems/hpcc-base:6-xenial
 RUN apt-get update && apt-get install -y iputils-ping
 RUN groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc
 
-ENV VERSION 6.4.36
-ENV FULL_VERSION 6.4.36-1
+ENV VERSION 6.4.40
+ENV FULL_VERSION 6.4.40-1
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 ENV PLATFORM_PACKAGE hpccsystems-platform-community_${FULL_VERSION}xenial_amd64.deb
 
