@@ -1,0 +1,20 @@
+FROM hpccsystems/hpcc-base:7-xenial
+
+RUN apt-get update && apt-get install -y curl libarchive13 openjdk-8-jdk
+
+ENV VERSION 7.2.14
+ENV FULL_VERSION 7.2.14-1
+#ENV CLIENTTOOLS_DOWNLOAD_MD5
+ENV CLIENTTOOLS_PACKAGE hpccsystems-clienttools-community_${FULL_VERSION}xenial_amd64.deb
+
+RUN set -x \
+   &&  wget  "http://wpc.423a.rhocdn.net/00423A/releases/CE-Candidate-${VERSION}/bin/clienttools/${CLIENTTOOLS_PACKAGE}" \
+   #&& echo "$CLIENTTOOLS_DOWNLOAD_MD5 ${CLIENTTOOLS_PACKAGE}" | md5sum -c - \
+   && dpkg -i "${CLIENTTOOLS_PACKAGE}" \
+   && rm -rf "${CLIENTTOOLS_PACKAGE}"
+
+
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["/usr/sbin/sshd", "-D"]
