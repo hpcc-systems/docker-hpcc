@@ -1,10 +1,10 @@
 # HPCC Systems Platform Community Version
   platform/
-  -  ce/base/<version>/Dockerfile: HPCC Systems Platform Community version prequisites (Ubuntu 18.04)
+  -  ce/base/&lt;version&gt;/Dockerfile: HPCC Systems Platform Community version prequisites (Ubuntu 18.04)
      Docker Hub:  hpccsystems/hpcc-base
   -  ce/Dockerfile  HPCC Systems Platform Community version Docker build file with version as input argument.
      Docker Hub:  hpccsystems/platform
-  -  ln/base/<version>/Dockerfile: HPCC Systems Platform Internal version prequisites (CentOS 7)
+  -  ln/base/&lt;version&gt;/Dockerfile: HPCC Systems Platform Internal version prequisites (CentOS 7)
   -  ln/Dockerfile HPCC Systems Platform Internal with Plugins Docker build file with version as input argument
 
   clienttools/
@@ -25,11 +25,11 @@ sudo docker build -t hpccsystems/platform:7.4.8-1 --build-arg version=7.4.8-1 .
 ```
 
 # Development and custom Build
-  dev/<version>
-    <bionic|disco|eoan|el7|gcc7|gcc8|gcc9>/
-  -   base/<verson>/Dockerfile: HPCC Systems Platform community version prequisites
+  dev/&lt;version&gt;
+    &lt;bionic|disco|eoan|el7|gcc7|gcc8|gcc9&gt;/
+  -   base/&lt;verson&gt;/Dockerfile: HPCC Systems Platform community version prequisites
   -   bldsvr/Dockerfile: Build Server Docker build file
-  -   platform/<ce|ln>/Dockerfile: Docker build file for compiling and building HPCC Systems Platform image
+  -   platform/&lt;ce|ln&gt;/Dockerfile: Docker build file for compiling and building HPCC Systems Platform image
 
 ## How to build
   The compiling and building Docker build file has "ARG" for various input parameter.
@@ -51,5 +51,5 @@ sudo docker build -t <your docker hub name>/platform:<your branch> --build-arg o
 
 Build a private repo:
 ```console
-sudo docker build -t  <your docker hub name>/platform:<branch> --build-arg owner=<owner of repo> --build-arg branch=<branch> --build-arg user=<username> --build-arg password=<password>  .
+sudo docker build -t  <your docker hub name>/platform:<branch> --build-arg owner=<owner of repo> --build-arg branch=<branch>--build-arg user=<username> --build-arg password=<password> .
 ```

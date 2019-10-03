@@ -1,7 +1,7 @@
 
 ## Prerequisites
-Tested on Ubuntu 16.04.
-Need ubuntu 16.04 update 4 or above
+Tested on Ubuntu 18.04.
+Need ubuntu 18.04 update 4 or above
 
 Install git
 ```sh
@@ -17,7 +17,7 @@ https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
 ```sh
 sudo docker swarm init --advertise-addr <ip>
 ```
-<ip> is one of the ip on this Linux
+&lt;ip&gt; is one of the ip on this Linux
 For example, for Virtualbox it can be host-only or bridged ip or docker0 ip
 
 
@@ -77,7 +77,7 @@ Get docker container id for admin node
 ./cluster_query -q id -g admin
 ```
 
-You can use <id> to access the container:
+You can use &lt;id&gt; to access the container:
 ```sh
 sudo docker exec -it <id> /bin/bash
 ```
