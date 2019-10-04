@@ -14,7 +14,9 @@ sudo  docker build -t <platform|clienttools>:<tag> --build-arg version=<version>
 ```
 
 ```console
-sudo  docker tag <platform|clienttools>:<tag> <Docker Image Registry Repository>:<tag>
+#sudo  docker tag <platform|clienttools>:<tag> <Docker Image Registry Repository>:<tag>
+#for example,
+sudo  docker tag hpccsystems/platform:7.4.24-1 446598291512.dkr.ecr.us-east-2.amazonaws.com/hpccsystems/platform:7.4.24-1
 ```
 
 ### Push
@@ -52,11 +54,13 @@ ECR is regional service not global service. Pulling images cross regions is poss
 
 ### Login
 ```console
-$(aws ecr get-login --no-include-email --region us-east-2)
+sudo $(aws ecr get-login --no-include-email --region us-east-2)
 
 ```
 
 ### Push
 ```console
-docker push <aws account id>.dkr.ecr.us-east-2.amazonaws.com/hpcc-systems-platform:<tag>
+#sudo docker push <aws account id>.dkr.ecr.us-east-2.amazonaws.com/hpcc-systems-platform:<tag>
+#for example,
+sudo  docker push 446598291512.dkr.ecr.us-east-2.amazonaws.com/hpccsystems/platform:7.4.24-1
 ```

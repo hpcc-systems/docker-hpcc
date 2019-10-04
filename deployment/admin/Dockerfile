@@ -1,6 +1,8 @@
 FROM hpccsystems/hpcc-base:7-bionic
 
-ARG version=7.4.10-1
+ARG version=
+RUN if [ -z "${version}" ] ; then echo Missing HPCC version; exit 1; else : ; fi
+
 #ENV PLATFORM_DOWNLOAD_MD5  a62b43a1ef1ecf7d8d702d9033e9cf39
 RUN set -ex; \
    apt-get update; \

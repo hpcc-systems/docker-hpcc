@@ -251,7 +251,7 @@ function adjust_node_type_for_ansible()
     dali_ip=$($SUDOCMD /opt/HPCCSystems/sbin/configgen -env ${clusterConfigDir}/environment.xml -listall -t dali | cut -d',' -f3)
     echo $dali_ip > ${ipDir2}/dali
 
-    if [ -e ${ipDirs2}/node ]
+    if [ -e ${ipDir2}/node ]
     then
          node_to_process=node
     else
