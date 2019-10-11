@@ -85,11 +85,11 @@ function build()
 
 }
 
-versions=("6")
+versions=("7")
 packages=("platform")
 variants=("ubuntu")
 inTag=
-latestRelease=6
+latestRelease=7
 repo="hpccsystems/hpcc"
 
 distro_tag["centos"]="el7"
