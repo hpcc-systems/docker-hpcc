@@ -24,15 +24,20 @@ https://hpccsystems.com
 # How to use this image
 You can start the Docker HPCC Systems image in interactive (-i -t) or daemon mode (-d). You must start the HPCC Systems processes then go to ECLWatch to submit jobs, query, and explore your data with the HPCC Systems platform.
 
-To start Docker in interactive mode :
-```
+To start Docker on in interactive mode :
+```console
 sudo docker run -t -i  hpccsystems/platform  /bin/bash
+```
+For start CentOS Docker image
+```console
+sudo docker run -t -i --cap-add SYS_RESOURCE -e "container=docker"  <docker image>  /bin/bash
 ```
 
 To start Docker in daemon mode
-```
+```console
 sudo docker run -d hpccsystems/platform
 ```
+
 
 # How is this image build
 ```console
