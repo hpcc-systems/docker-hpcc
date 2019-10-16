@@ -5,7 +5,7 @@ RUN if [ -z "${version}" ] ; then echo Missing HPCC version; exit 1; else : ; fi
 
 RUN set -ex; \
    apt-get update; \
-   apt-get install -y iputils-ping curl xterm libarchive13 ; \
+   apt-get install -y iputils-ping curl xterm libarchive13 gpg ; \
    groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc ; \
    export VERSION_MMP=${version%-*}; \
    export PLATFORM_PACKAGE=hpccsystems-platform-community_${version}bionic_amd64.deb; \

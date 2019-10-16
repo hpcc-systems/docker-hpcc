@@ -7,6 +7,7 @@ RUN yum update -y &&  yum install -y \
 #     curl \
 #     git  \
      java-1.8.0-openjdk \
+     gpg \
      R-core-devel
 
 RUN set -ex; \
