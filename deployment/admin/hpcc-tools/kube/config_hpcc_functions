@@ -40,14 +40,21 @@ function add_roxie_to_envxml()
     env_in=$1
     env_out=$2
 
-    [ ! -e ${ipDir}/roxie* ] && return
+    [ ! -e ${ipDir}/roxie* ] &&  [ ! -e ${ipDir}/thor_roxie* ] && return
 
     env_in_temp=$env_in
     env_out_temp=/tmp/roxie_env_out.xml
     ls ${ipDir} | grep roxie* | while read ip_file
     do
+        cluster_type=$(echo ${ip_file} | cut -d '-' -s -f 1)
         roxie_name=$(echo ${ip_file} | cut -d '-' -s -f 2)
-        [ -z "$roxie_name" ] && roxie_name=myroxie
+        if [ "cluster_type" = "thor_roxie" ]
+        then
+          roxie_name=$(echo ${roxie_name} | cut -d '_' -s -f 2)
+        elif [ -z "$roxie_name" ] 
+        then
+          roxie_name=myroxie
+        fi
 
         # Add roxie nodes
         echo "$SUDOCMD ${HPCC_HOME}/sbin/envgen2 -env-in ${env_in_temp} -env-out ${env_out_temp} \
@@ -70,15 +77,23 @@ function add_thor_to_envxml()
     env_in=$1
     env_out=$2
 
-    [ ! -e ${ipDir}/thor-* ] && return
+    [ ! -e ${ipDir}/thor-* ] && [ ! -e ${ipDir}/thor_roxie-* ] && return
 
     env_in_temp=${env_in}
     env_out_temp=/tmp/thor_env_out.xml
     master_index=1 # in chance we need multiple thor masters from suppport nodes
-    ls ${ipDir} | grep "thor-" | while read ip_file
+    ls ${ipDir} | grep "thor-\|thorroxie" | while read ip_file
     do
+        cluster_type=$(echo ${ip_file} | cut -d '-' -s -f 1)
         thor_name=$(echo ${ip_file} | cut -d '-' -s -f 2)
-        [ -z "$thor_name" ] && thor_name=mythor
+        if [ "cluster_type" = "thor_roxie" ]
+        then
+          thor_name=$(echo ${thor_name} | cut -d '_' -s -f 1)
+        elif [ -z "$thor_name" ] 
+        then
+          thor_name=mythor
+        fi
+
 
         # Add thor master node
         if [ -e ${ipDir}/thormaster-${thor_name} ]

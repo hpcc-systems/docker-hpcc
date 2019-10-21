@@ -60,6 +60,7 @@ def main():
              if (pod_name.startswith('dali')      or
                  pod_name.startswith('esp')       or
                  pod_name.startswith('thor')      or
+                 pod_name.startswith('thor_roxie') or
                  pod_name.startswith('roxie')     or
                  pod_name.startswith('eclcc')     or
                  pod_name.startswith('scheduler') or

@@ -35,6 +35,7 @@ class CollectIPsFromKube (CollectIPs):
                  node_name.startswith('dali')      or
                  node_name.startswith('esp')       or
                  node_name.startswith('thor')      or
+                 node_name.startswith('thor_roxie') or
                  node_name.startswith('roxie')     or
                  node_name.startswith('eclcc')     or
                  node_name.startswith('scheduler') or
