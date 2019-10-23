@@ -10,7 +10,7 @@ RUN set -ex; \
    rm -rf "${PLATFORM_PACKAGE}"
 
 
-EXPOSE 8010 8002 8015 9876
+EXPOSE 8010 8002 8015 9876 18010 18002 18015 19876
 
 #COPY id_rsa* /home/hpcc/.ssh/
 

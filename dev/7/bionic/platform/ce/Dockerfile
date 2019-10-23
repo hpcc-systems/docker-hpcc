@@ -45,5 +45,7 @@ RUN set -ex; \
    dpkg -i hpccsystems*.deb; \
    rm -rf  hpccsystems*.deb
 
+EXPOSE 8010 8002 8015 9876 18010 18002 18015 19876
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/usr/sbin/sshd", "-D"]
+CD ["/usr/sbin/sshd", "-D"]

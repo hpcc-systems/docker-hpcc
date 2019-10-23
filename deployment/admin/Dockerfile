@@ -18,7 +18,7 @@ RUN set -ex; \
    dpkg -i "${PLATFORM_PACKAGE}" ;\
    rm -rf "${PLATFORM_PACKAGE}"
 
-EXPOSE 8010 8002 8015 9876
+EXPOSE 8015 18015
 
 #COPY id_rsa* /home/hpcc/.ssh/
 #RUN set -ex; \

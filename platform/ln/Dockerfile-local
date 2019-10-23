@@ -3,6 +3,8 @@ FROM hpccsystems/hpcc-base:7-el7
 ARG version=
 RUN if [ -z "${version}" ] ; then echo Missing HPCC version; exit 1; else : ; fi
 
+COPY hpccsystems-platform* .
+
 RUN yum update -y &&  yum install -y \
 #     curl \
 #     git  \
@@ -28,8 +30,7 @@ RUN set -ex; \
     \
     export VERSION_MMP=${version%-*}; \
     export PLATFORM_PACKAGE=hpccsystems-platform-internal_${version}.el7.x86_64.rpm; \
-    wget  "http://10.240.32.242/builds/LN-Candidate-${VERSION_MMP}/bin/platform-withplugins/${PLATFORM_PACKAGE}"; \
-    #echo "$PLATFORM_DOWNLOAD_MD5 ${PLATFORM_PACKAGE}" | md5sum -c -; \
+    export PLATFORM_PACKAGE=$(ls hpccsystems-platform*); \
     yum install --nogpgcheck -y "${PLATFORM_PACKAGE}"; \
     rm -rf  "${PLATFORM_PACKAGE}"
 

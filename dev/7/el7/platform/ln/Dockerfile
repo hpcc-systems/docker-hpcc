@@ -92,6 +92,8 @@ RUN set -ex; \
    yum install --nogpgcheck -y hpccsystems*.rpm; \
    rm -rf  hpccsystems*.rpm
 
+EXPOSE 8010 8002 8015 9876 18010 18002 18015 19876
+
 #RUN cp -r /home/hpcc/.ssh ~/
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/sshd", "-D"]
