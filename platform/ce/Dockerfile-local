@@ -3,7 +3,7 @@ FROM hpccsystems/hpcc-base:7-bionic
 COPY hpccsystems-platform* .
 RUN set -ex; \
    apt-get update; \
-   apt-get install -y iputils-ping curl xterm libarchive13 ; \
+   apt-get install -y iputils-ping curl xterm libarchive13 gpg ; \
    groupadd hpcc && useradd -s /bin/bash -r -m -d /home/hpcc -g hpcc -c "hpcc Runtime User" hpcc ; \
    export PLATFORM_PACKAGE=$(ls hpccsystems-platform*); \
    dpkg -i "${PLATFORM_PACKAGE}" ; \
