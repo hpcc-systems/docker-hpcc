@@ -1,8 +1,13 @@
 #!/bin/sh
 set -e
 
-/usr/bin/ssh-keygen -A
-#/etc/init.d/hpcc-init start
+if [ "${START_SSHD}" = "true" ]
+then
+  /usr/bin/ssh-keygen -A
+  service ssh start
+fi
+
+ [ "${START_HPCC}" = "true" ] && /etc/init.d/hpcc-init start
 
 if [ "${EXEC_IN_LOOP}" = "true" ]
 then

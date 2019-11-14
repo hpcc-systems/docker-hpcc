@@ -1,8 +1,0 @@
-# run as ansible-playbook restart_thor.yaml --extra-vars "thor_name=mythor"
----
-- name: Execute a script.
-  hosts: 'thor'
-  remote_user: 'root'
-  tasks:
-     - name: Execute the script
-       command: bash /etc/init.d/hpcc-init -c '{{thor_name}}' start
