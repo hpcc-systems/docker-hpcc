@@ -40,6 +40,11 @@ To start Docker in interactive mode and map ECLWatch port 8010 to host 8010:
 sudo docker run -t -i -p 8010:8010 hpccsystems/hpcc /bin/bash
 ```
 
+To start HPCC:
+```sh
+/etc/init.d/hpcc-init start
+```
+
 To start Docker in daemon mode and map ECLWatch port 8010 to host 8020:
 ```sh
 sudo docker run -d -p 8020:8010  hpccsystems/hpcc
